@@ -1,9 +1,18 @@
+require './PhoneNumber'
 class Contact
 	attr_accessor:firstName,:middleName,:lastName
+	attr_reader :phoneNumbers
 	def initialize(firstName='John',middleName='',lastName='Smith')
 		@firstName = firstName
 		@middleName = middleName
 		@lastName = lastName
+		@phoneNumbers = []
+	end
+	def addPhoneNumber(kind, number)
+		phoneNumber = PhoneNumber.new
+		phoneNumber.kind = kind 
+		phoneNumber.number = number
+		@phoneNumbers.push(phoneNumber)
 	end
 	def lastFirst
 		lastFirst = @lastName + ','
