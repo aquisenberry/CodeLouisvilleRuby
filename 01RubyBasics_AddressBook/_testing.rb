@@ -35,3 +35,14 @@ contacts.each do |con|
 	end
 	puts "----------\n\n\n"
 end
+
+jason = Contact.new
+jason.firstName = "Jason"
+jason.lastName = "Seifer"
+jason.addPhoneNumber("Home", "123-456-7890")
+jason.addPhoneNumber("Work", "456-789-0123")
+jason.addAddress("Home", "123 Main St.", "", "Portland", "OR", "12345")
+
+puts jason.to_s('full_name')
+jason.printPhoneNumbers
+jason.printAddresses
