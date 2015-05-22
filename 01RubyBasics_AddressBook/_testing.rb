@@ -1,4 +1,5 @@
 require "./Contact"
+require "./AddressBook"
 contacts = []
 anthony = {firstName: "Anthony", middleName: "Quinton", lastName: "Quisenberry", home: "(111)111-1111", work: "(222)222-2222", cell: "(333)333-3333"}
 samantha = {firstName: "Samantha", middleName: "Marie", lastName: "Semones", home: "", work: "(222)222-2222", cell: "(333)333-3333"}
@@ -7,6 +8,7 @@ awes = {firstName: "Awes", middleName: "", lastName: "Saidi", home: "(111)111-11
 
 contacts.push(anthony,samantha,kylah,awes)
 
+addressBook = AddressBook.new
 contact = Contact.new 
 
 puts contact.fullName
@@ -46,3 +48,7 @@ jason.addAddress("Home", "123 Main St.", "", "Portland", "OR", "12345")
 puts jason.to_s('full_name')
 jason.printPhoneNumbers
 jason.printAddresses
+
+addressBook.contacts.push(jason)
+
+addressBook.printContactList
