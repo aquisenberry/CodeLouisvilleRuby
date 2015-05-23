@@ -1,8 +1,9 @@
 require "./Contact"
 class AddressBook
-	attr_reader :contacts
+	attr_reader :contacts, :clear
 	def initialize
 		@contacts = []
+		@clear = %x{clear}
 	end
 	def printContactList
 		puts "Contact List"
@@ -107,11 +108,14 @@ class AddressBook
 		end
 
 	end
+	
 	def run
 		loop do
+			puts clear
 			puts "Address Book"
 			puts "e: Exit"
-			puts "c: Add Contact"
+			puts "a: Add Contact"
+			puts "r: Remove Contact"
 			puts "p: Print Address Book"
 			print "Enter Your Choice: "
 			input = gets.chomp.downcase
@@ -120,9 +124,14 @@ class AddressBook
 			when "e"
 				break
 			when "p"
+				puts clear
 				printContactList
-			when "c"
+			when "a"
+				puts clear
 				addContact
+			when "r"
+				puts clear
+				removeContact
 			end
 		end
 	end
