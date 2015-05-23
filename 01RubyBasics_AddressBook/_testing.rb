@@ -11,8 +11,8 @@ contacts.push(anthony,samantha,kylah,awes)
 addressBook = AddressBook.new
 contact = Contact.new 
 
-puts contact.fullName
-puts contact.lastFirst
+# puts contact.fullName
+# puts contact.lastFirst
 
 contacts.each do |con|
 	contact1 = Contact.new(con[:firstName],con[:middleName],con[:lastName])
@@ -25,17 +25,8 @@ contacts.each do |con|
 	if con[:cell].length > 0 then 
 		contact1.addPhoneNumber("cell",con[:cell])
 	end
-	puts "----------"
-	puts "First name: " + contact1.firstName
-	puts "Middle name: " + contact1.middleName
-	puts "Last name: " + contact1.lastName
-	puts "Last name first: " + contact1.lastFirst
-	puts "Full name: " + contact1.fullName
-	puts "Numbers: "
-	contact1.phoneNumbers.each do |number|
-		puts "\t" + number.to_s
-	end
-	puts "----------\n\n\n"
+	contact1.addAddress("Home", "123 Main St.", "", "Portland", "OR", "12345")
+	addressBook.contacts.push(contact1)
 end
 
 jason = Contact.new
@@ -45,10 +36,19 @@ jason.addPhoneNumber("Home", "123-456-7890")
 jason.addPhoneNumber("Work", "456-789-0123")
 jason.addAddress("Home", "123 Main St.", "", "Portland", "OR", "12345")
 
-puts jason.to_s('full_name')
-jason.printPhoneNumbers
-jason.printAddresses
+# puts jason.to_s('full_name')
+# jason.printPhoneNumbers
+# jason.printAddresses
 
 addressBook.contacts.push(jason)
+#test printContactList
+#addressBook.printContactList
 
-addressBook.printContactList
+#test findByName
+# addressBook.findByName("e")
+
+#test findByPhoneNumber
+# addressBook.findByPhoneNumber("2")
+
+#test findByAddress
+addressBook.findByAddress("1")
