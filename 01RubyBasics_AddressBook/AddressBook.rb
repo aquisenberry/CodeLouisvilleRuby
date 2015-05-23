@@ -51,4 +51,18 @@ class AddressBook
 			puts item.to_s("fullName")
 		}
 	end
+
+	def run
+		loop do
+			puts "Address Book"
+			puts "e: Exit"
+			print "Enter Your Choice: "
+			input = gets.chomp.downcase
+
+			case input
+			when "e"
+				break
+			end
+		end
+	end
 end

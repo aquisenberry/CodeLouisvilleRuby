@@ -51,4 +51,6 @@ addressBook.contacts.push(jason)
 # addressBook.findByPhoneNumber("2")
 
 #test findByAddress
-addressBook.findByAddress("1")
+# addressBook.findByAddress("1")
+
+addressBook.run
