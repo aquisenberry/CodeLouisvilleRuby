@@ -1,0 +1,17 @@
+---
+- !ruby/object:Contact
+  firstName: Samantha
+  middleName: Marie
+  lastName: Semones
+  phoneNumbers:
+  - !ruby/object:PhoneNumber
+    kind: Cell
+    number: '5028765039'
+  addresses:
+  - !ruby/object:Address
+    kind: Home
+    street1: 123 home place
+    street2: ''
+    city: Louisville
+    state: KY
+    zip: '44432'

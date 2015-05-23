@@ -51,18 +51,18 @@ class Contact
 		fullName
 	end
 	def to_s(format='full_name')
-		result = "\n\n----------\nContact:\n\t"
+		result = "\n----------\nContact:\n\t"
 		case format
 		when "full_name"
-			result += fullName + "\n\n"
+			result += fullName + "\n"
 		when "last_first"
-			result += lastFirst + "\n\n"
+			result += lastFirst+ "\n"
 		when "first"
-			result += firstName + "\n\n"
+			result += firstName+ "\n"
 		when "last"
-			result += lastName + "\n\n"
+			result += lastNam + "\n"
 		else
-			result += fullName + "\n\n"
+			result += fullName + "\n"
 		end
 			result += "Phone:\n"
 			phoneNumbers.each{|number| result +="\t"+number.to_s+"\n"}

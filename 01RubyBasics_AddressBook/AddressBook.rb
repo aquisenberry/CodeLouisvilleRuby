@@ -1,9 +1,11 @@
 require "./Contact"
+require "yaml"
 class AddressBook
 	attr_reader :contacts, :clear
 	def initialize
 		@contacts = []
 		@clear = %x{clear}
+		open()
 	end
 	def printContactList
 		puts "Contact List"
@@ -47,7 +49,7 @@ class AddressBook
 		printContacts(results, "Address")
 	end
 	def printContacts(result, string)
-		puts "Results by #{string}"
+		puts "Results by #{string}(#{result.length})"
 		result.each{|item|
 			puts item.to_s("fullName")
 		}
@@ -108,20 +110,53 @@ class AddressBook
 		end
 
 	end
-	
+	def doSearch
+		print "Search Term: "
+		search = gets.chomp
+		findByName(search)
+		findByPhoneNumber(search)
+		findByAddress(search)
+	end
+	# def removeContact
+	# 	puts "------------"
+	# 	index = 1
+	# 	contacts.each{|contact|
+	# 		puts "#{index})\t#{contact.fullName}"
+	# 		index +=1
+	# 	}
+	# 	puts "------------"
+	# 	print "Please select a contact to remove[1/2/...]: "
+	# 	selection = gets.chomp
+		
+	# 	puts selection
+	# 	gets
+	# end
+	def open
+		if File.exist?("contacts.yml")
+			@contacts = YAML.load_file("contacts.yml")
+		end
+	end
+	def save
+		File.open("contacts.yml","w"){|file|
+			file.write(contacts.to_yaml)
+		}
+	end
 	def run
+		puts clear
 		loop do
-			puts clear
-			puts "Address Book"
+			
+			puts "\n\nAddress Book"
 			puts "e: Exit"
 			puts "a: Add Contact"
-			puts "r: Remove Contact"
+			puts "s: Search Contacts"
+			# puts "r: Remove Contact"
 			puts "p: Print Address Book"
 			print "Enter Your Choice: "
 			input = gets.chomp.downcase
 
 			case input
 			when "e"
+				save()
 				break
 			when "p"
 				puts clear
@@ -129,9 +164,12 @@ class AddressBook
 			when "a"
 				puts clear
 				addContact
-			when "r"
+			when "s"
 				puts clear
-				removeContact
+				doSearch
+			# when "r"
+			# 	puts clear
+			# 	removeContact
 			end
 		end
 	end
