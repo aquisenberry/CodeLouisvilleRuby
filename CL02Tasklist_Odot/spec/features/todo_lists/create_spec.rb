@@ -53,4 +53,15 @@ describe "Creating todo lists" do
 		expect(page).to_not have_content("Hello")
 
 	end
+	it "Displays an error when the todo list has a description < 3 chars "do
+		expect(TodoList.count).to eq(0)		
+		createTodoList title: "Hello", description: "he"
+
+		expect(page).to have_content("error")		
+		expect(TodoList.count).to eq(0)	
+
+		visit "/todo_lists"
+		expect(page).to_not have_content("Hello")
+
+	end
 end
