@@ -20,8 +20,8 @@ module CL02TasklistOdot
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
   end
-  RSpec.configure do |c|
-    c.expose_current_running_example_as :example
-  end
+  # RSpec.configure do |c|
+  #   c.expose_current_running_example_as :example
+  # end
 
 end
