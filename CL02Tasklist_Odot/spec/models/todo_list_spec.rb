@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe TodoList do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it{should have_many(:todoItems).with_foreign_key('todoList_id')}
 end
