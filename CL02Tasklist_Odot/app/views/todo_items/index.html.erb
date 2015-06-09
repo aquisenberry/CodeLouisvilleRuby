@@ -1,14 +1,14 @@
 <h1><%= @todoList.title%></h1>
 
-<ul class="todo-items">
+<table class="todo-items">
 	<% @todoList.todoItems.each do |item|%>
-	<li id="<%=dom_id(item) %>">
+	<tr id="<%=dom_id(item) %>">
 		<%=item.content%>
 		<%=link_to "Edit", edit_todo_list_todo_item_path(item) %>
 		<%=link_to "Delete", todo_list_todo_item_path(item), method: :delete, data: {confirm: "Are you sure"} %>
-	</li>
+	</tr>
 	<%end%>
-</ul>
+</table>
 
 <p>
 	<%=link_to "New Todo Item", new_todo_list_todo_item_path %>
