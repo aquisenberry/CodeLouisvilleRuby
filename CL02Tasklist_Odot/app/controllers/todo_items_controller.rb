@@ -43,6 +43,12 @@ class TodoItemsController < ApplicationController
     redirect_to todo_list_todo_items_path
   end
   
+  def complete
+    findTodoItem
+    @todoItem.update_attribute(:completed_at,Time.now)
+    redirect_to todo_list_todo_items_path, notice: "Todo item marked as complete"
+  end
+  
   def url_options
     {todo_list_id: params[:todo_list_id]}.merge(super)
   end

@@ -3,6 +3,8 @@
 <table class="todo-items">
 	<% @todoList.todoItems.each do |item|%>
 	<tr id="<%=dom_id(item) %>">
+		<%=link_to "Mark Complete", complete_todo_list_todo_item_path(item), method: :patch %>
+
 		<%=item.content%>
 		<%=link_to "Edit", edit_todo_list_todo_item_path(item) %>
 		<%=link_to "Delete", todo_list_todo_item_path(item), method: :delete, data: {confirm: "Are you sure"} %>
