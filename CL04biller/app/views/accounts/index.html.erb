@@ -1,0 +1,26 @@
+<div class="customer-accounts">
+	<h1>Customers</h1>
+<%@accounts.each do |a|%>
+	<%if a.type == "Customer"%>
+		<div class="account">
+			<h2><%=link_to a.name,account_path(a)%></h2>
+			<p><%=a.about%></p>
+			<h4>Account Entries: (<%=a.account_entries.count%>)</h4>
+		</div>
+	<%end%>
+<%end%>
+<%= link_to "Register a new Customer", new_account_path(:type =>"Customer")%> 
+</div>
+
+<div class="employee-accounts">
+	<h1>Employees</h1>
+<%@accounts.each do |a|%>
+	<%if a.type == "Employee"%>
+		<div class="account">
+			<h2><%=link_to a.name,account_path(a)%></h2>
+			<h4>Account Entries: (<%=a.account_entries.count%>)</h4>
+		</div>
+	<%end%>
+<%end%>
+<%= link_to "Register a new Employee", new_account_path(:type =>"Employee")%> 
+</div>

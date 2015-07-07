@@ -1,0 +1,21 @@
+<h1>New <%=@account.type%></h1>
+
+<%= form_for(@account) do |a| %>
+  <div class="field">
+    <%= a.label :name %><br>
+    <%= a.text_field :name %>
+  </div>
+  <div class="field">
+    <%= a.label :email %><br>
+    <%= a.text_field :email %>
+  </div>
+  <%if @account.type == "Customer"%>
+  <div class="field">
+    <%= a.label :about %><br>
+    <%= a.text_area :about %>
+  </div>
+  <%end%>
+  <div class="actions">
+    <%= a.submit ("Create #{@account.type}")%>
+  </div>
+<% end %>

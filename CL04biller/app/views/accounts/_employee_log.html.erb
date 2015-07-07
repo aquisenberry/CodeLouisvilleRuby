@@ -1,0 +1,9 @@
+<%@accounts.each do |a|%>
+<%	if a.type == "Customer"%>
+	<h3><%=a.name%></h3>
+<%		a.time_entries.each do |t|%>
+<%			if t.employee.id == @account.id%>
+
+<%			end%>
+<%	end%>
+<%end%>
