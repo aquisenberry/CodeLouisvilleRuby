@@ -1,0 +1,60 @@
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+
+<p>Create a new resource type. Each resource type requires a name and contains up to five fields. At least one field is required.</p>
+  <%= form_for(@resource) do |f| %>
+    <% if @resource.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+        <ul>
+        <% @resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    
+    <div class="form-group field">
+      <%= f.label :type_name, "Resource Type (Name)" %><br>
+      <%= f.text_field :type_name, :class => "form-control" %>
+    </div>
+    <div class="form-group field">
+      <%= f.label :value_1_header_i, "Field Name" %><br>
+      <%= f.text_field :value_1_header_i, :class => "form-control" %>
+    </div>
+
+    <div class="form-group field">
+      <%= f.label :value_2_header, "Field Name" %><br>
+      <%= f.text_field :value_2_header, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group field">
+    <%= f.label :value_3_header, "Field Name" %><br>
+        <%= f.text_field :value_3_header , :class => "form-control", :id => "datepicker1" %>
+    </div>
+
+    <div class="form-group field">
+      <%= f.label :value_4_header, "Field Name" %><br>
+      <%= f.text_field :value_4_header, :class => "form-control" %>
+    </div>
+
+    <div class="form-group field">
+      <%= f.label :value_5_header, "Field Name" %><br>
+      <%= f.text_field :value_5_header, :class => "form-control" %>
+    </div>
+
+    <div class="form-group field">
+      <%= f.label :value_6_header, "Field Name" %><br>
+      <%= f.text_field :value_6_header, :class => "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Create Resource Type", :class => "btn" %>
+    </div>
+  <% end %>
+  <script>
+    
+  </script>

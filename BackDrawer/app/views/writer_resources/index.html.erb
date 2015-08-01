@@ -1,0 +1,11 @@
+<div class="container">
+	<h1>This is the root</h1>
+</div>
+<div class="container">
+	<div class="nav pull-left">
+		<%=link_to "add resource type",resource_types_new_path%>
+	</div>
+<% @resources.each do |r|%>
+<h2>r.resource_name
+<%end%>
+</div>

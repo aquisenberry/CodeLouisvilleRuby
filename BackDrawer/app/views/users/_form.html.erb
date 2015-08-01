@@ -1,0 +1,59 @@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group field">
+      <%= f.label :first_name, "First Name" %><br>
+      <%= f.text_field :first_name, :class => "form-control" %>
+    </div>
+    <div class="form-group field">
+      <%= f.label :last_name, "Last Name" %><br>
+      <%= f.text_field :last_name, :class => "form-control" %>
+    </div>
+
+    <div class="form-group field">
+      <%= f.label :username, "Username" %><br>
+      <%= f.text_field :username, :class => "form-control" %>
+    </div>
+    
+    <div class="form-group field">
+    <%= f.label :date_of_birth, "Date of Birth" %><br>
+        <%= f.text_field :date_of_birth , :class => "form-control", :id => "datepicker1" %>
+    </div>
+
+    <div class="form-group field">
+      <%= f.label :email_address, "Email Address" %><br>
+      <%= f.text_field :email_address, :class => "form-control" %>
+    </div>
+
+    
+    
+    <div class="form-group field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, :class => "form-control"  %>
+    </div>
+    <div class="form-group field">
+      <%= f.label :password_confirmation, "Confirm Password" %><br>
+      <%= f.password_field :password_confirmation, :class => "form-control"  %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Register User", :class => "btn" %>
+    </div>
+  <% end %>
+  <script>
+    $(document).ready(function(){
+      $('#datepicker1').datepicker();
+    });
+  </script>
