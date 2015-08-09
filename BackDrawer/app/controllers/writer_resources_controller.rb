@@ -1,9 +1,10 @@
 class WriterResourcesController < ApplicationController
 	before_action :require_login
+	before_action :set_resource, only: [:edit, :update, :show]
 	def index
 		@resources = WriterResource.where(:user_id => session[:user_id])
 	end
-	def new
+	def create
 		@resource = WriterResource.new(resource_params)
 
 	    respond_to do |format|
@@ -16,20 +17,40 @@ class WriterResourcesController < ApplicationController
 	      end
 	    end
 	end
+	def new
+		@resource = WriterResource.new()
+	end
 	def show
+		require_ownership(@resource)
+		
 	end
-	def new_type
-		@resource_type = ResourceType.new(type_params)
+	def edit
 	end
-	def show_type
+	def update
+	    respond_to do |format|
+			if @resource.update(resource_params)
+				format.html { redirect_to @resource, notice: 'Todo list was successfully updated.' }
+				format.json { head :no_content }
+			else
+				format.html { render action: 'edit' }
+				format.json { render json: @resource.errors, status: :unprocessable_entity }
+			end
+	    end
 	end
-	def list_types
+	
+	private
 
-	end
-	def type_params
-      params.permit(:type_name, :value_1_header_i, :value_2_header, :value_3_header, :value_4_header, :value_5_header, :value_6_header)
+	def set_resource
+      @resource = WriterResource.find(params[:id])
     end
+	def require_ownership( resource)
+		if @current_user.id == resource.user_id
+	  		true
+	  	else
+	  		redirect_to writer_resources_path, info: "Please log in to view that content"
+	  	end
+	end
     def resource_params
-      params.require(:user).permit(:first_name, :last_name, :email_address, :password, :password_confirmation, :username, :date_of_birth)
+      params.require(:writer_resource).permit(:resource_name, :details).merge(user_id: @current_user.id)
     end
 end

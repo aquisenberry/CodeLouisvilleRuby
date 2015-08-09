@@ -1,23 +1,48 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      user: 
+        email_address: "Email"
+        first_name: "First Name"
+        last_name: "Last Name"
+        username: 
+        date_of_birth: "Birthdate"
+      writer_resource:
+        user_id: "User"
+        resource_type_id: "Type"
+        resource_name: "Name"
+        resource_value_1_i: "Field 1(index)"
+        resource_value_2: "Field 2"
+        resource_value_3: "Field 3"
+        resource_value_4: "Field 4"
+        resource_value_5: "Field 5"
+        resource_value_6: "Field 6"
+    errors:
+      models:
+        user:
+          attributes:
+            email_address:
+              blank: "cannot be blank"
+              invalid: "must be in a valid email format"
+              taken: "is already in use"
+            first_name:
+              blank: "cannot be blank"
+            last_name:
+              blank: "cannot be blank"
+            username:
+              blank: "cannot be blank"
+              taken: "is already in use"
+              too_short: "must be at least 2 characters long"
+            date_of_birth: 
+              blank: "cannot be blank"
+        writer_resource:
+          attributes:
+            user_id:
+            resource_type_id:
+              blank: "must be selected"
+              inclusion: "must be a valid type"
+            resource_name:
+              blank: "cannot be blank"
+              too_short: "must be at least 2 characters long"
+            resource_value_1_i:
+              blank: "cannot be blank"

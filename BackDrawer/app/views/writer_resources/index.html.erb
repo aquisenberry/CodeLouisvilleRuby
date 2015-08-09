@@ -3,9 +3,11 @@
 </div>
 <div class="container">
 	<div class="nav pull-left">
-		<%=link_to "add resource type",resource_types_new_path%>
+		<%=link_to "add resource",new_writer_resource_path%>
 	</div>
 <% @resources.each do |r|%>
-<h2>r.resource_name
+<h2><%=r.resource_name%>
+<%= link_to "view", writer_resource_path(r.id)%>
+<%= link_to "edit", edit_writer_resource_path(r.id)%>
 <%end%>
 </div>

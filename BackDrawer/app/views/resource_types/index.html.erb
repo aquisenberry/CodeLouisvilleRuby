@@ -1,0 +1,11 @@
+<div class="container">
+	<h1> my index of resource types</h1>
+
+	<div class="nav pull-left">
+		<%=link_to "add resource type",new_resource_type_path%>
+	</div>
+	<% @resource_types.each do |r|%>
+	<h2><%=r.type_name%></h2>
+	<h2><%=r.value_1_header_i%></h2>
+	<%end%>
+</div>

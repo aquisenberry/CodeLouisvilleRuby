@@ -1,0 +1,5 @@
+<div class="container">
+<h1> <%=User.find_by(id: session[:user_id] ).username%>: New Resource Type</h1>
+
+<%= render 'form' %>
+</div>
